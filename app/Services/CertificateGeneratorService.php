@@ -15,53 +15,22 @@ class CertificateGeneratorService
 
         $presentation = IOFactory::load($templateFile);
 
-        // foreach ($presentation->getAllSlides() as $slide) {
-        //     foreach ($slide->getShapeCollection() as $shape) {
-        //         logger()->info('Shape Class: ' . get_class($shape));
-
-        //         if (method_exists($shape, 'getRichTextElements')) {
-
-        //             foreach ($shape->getRichTextElements() as $element) {
-        //                 $element->setText(
-        //                     str_replace(
-        //                         '{{NAME}}',
-        //                         $name,
-        //                         $element->getText()
-        //                     )
-        //                 );
-
-        //                 logger()->info('RUN TEXT: ' . $element->getText());
-        //             }
-        //         }
-        //     }
-        // }
-
         foreach ($presentation->getAllSlides() as $slide) {
 
             foreach ($slide->getShapeCollection() as $shape) {
 
                 // ONLY target RichText shape
-                // if (!($shape instanceof RichText)) {
-                //     logger()->info('is not RichText');
-                //     continue;
-                // }
-
-                // ONLY target RichText shape
                 if (get_class($shape) !== 'PhpOffice\PhpPresentation\Shape\RichText') {
-                    logger()->info('is not RichText: ' . get_class($shape));
                     continue;
                 }
 
                 foreach ($shape->getParagraphs() as $paragraph) {
-                    logger()->info('is Paragraph');
 
                     foreach ($paragraph->getRichTextElements() as $element) {
 
                         if (!method_exists($element, 'getText')) {
                             continue;
                         }
-
-                        logger()->info('getText');
 
                         $text = $element->getText();
 
