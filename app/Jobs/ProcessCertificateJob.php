@@ -19,6 +19,8 @@ class ProcessCertificateJob implements ShouldQueue
 {
     use Dispatchable, Queueable;
 
+    private string $bcc = 'lerryson@plixstar.com'; //set bcc email
+
     public function __construct(
         public string $excelFile,
         public string $pptxTemplate
@@ -54,7 +56,7 @@ class ProcessCertificateJob implements ShouldQueue
                 }
 
                 Mail::to($recipient->email)
-                    ->bcc('aadi.yew@plixstar.com')
+                    ->bcc($this->bcc)
                     ->send(
                         new CertificateMail(
                             $recipient->name,

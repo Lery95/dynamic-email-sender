@@ -5,6 +5,28 @@
     <meta charset="UTF-8">
     <title>Thank You & Certificate of Appreciation 🌟 – TAMSC Discovery Camp 2026
     </title>
+    <style>
+        @media only screen and (max-width: 600px) {
+
+            .hero-text {
+                font-size: 28px !important;
+                line-height: 34px !important;
+            }
+
+            .name {
+                font-size: 22px !important;
+            }
+
+            .logo {
+                width: 100px !important;
+            }
+
+            .cta {
+                font-size: 20px !important;
+                padding: 16px 30px !important;
+            }
+        }
+    </style>
 </head>
 
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
@@ -41,13 +63,8 @@
 
     <br>
 
-    <p>Warm regards,</p>
-
-    <p>
-        <strong>Plixstar Team</strong><br>
-        <a href="https://www.plixstar.com" target="_blank">www.plixstar.com</a>
-    </p>
-
 </body>
 
 </html>
+
+@include('plixstar-signature')

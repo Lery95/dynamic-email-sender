@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CertificateController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/certificates', [
     CertificateController::class,
@@ -12,12 +13,6 @@ Route::post('/certificates', [
     'upload'
 ])->name('certificate.upload');
 
-Route::get('/test-mail', function () {
-
-    Mail::raw('Test Email', function ($message) {
-        $message->to('lerryson@plixstar.com')
-            ->subject('Laravel Test');
-    });
-
-    return 'sent';
+Route::get('/signature', function () {
+    return view('plixstar-signature');
 });
